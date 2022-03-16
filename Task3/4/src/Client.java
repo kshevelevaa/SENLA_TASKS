@@ -2,7 +2,6 @@ public class Client {
     private String name;
     private String surname;
 
-
     private int hotelRoom;
 
     public Client(String name, String surname) {
