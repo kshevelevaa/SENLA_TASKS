@@ -1,8 +1,11 @@
-public class Rose extends Flower{
+public class Rose extends Flower {
 
-    void setPrice() {
-    this.price=150;
+    Rose() {
+        this.price = 150;
     }
 
-
+    @Override
+    void smell() {
+        System.out.println("smells sweet");
+    }
 }

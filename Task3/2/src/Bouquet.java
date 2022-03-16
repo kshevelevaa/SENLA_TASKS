@@ -1,14 +1,17 @@
 public class Bouquet {
-    Flower[] bouquet=new Flower[55];
-    public void addToBouquet(Flower flower){
-        int i=0;
-        while(bouquet[i]!=null) i++;
-        bouquet[i]=flower;
+
+    Flower[] bouquet = new Flower[55];
+    int size=0;
+
+    public void addToBouquet(Flower flower) {
+        bouquet[size]=flower;
+        size++;
     }
-    public int getSum(int count){
-        int sum=0;
-        for(int i=0;i<count;i++){
-            sum+=bouquet[i].getPrice();
+
+    public int getSum() {
+        int sum = 0;
+        for (int i = 0; i < size; i++) {
+            sum += bouquet[i].getPrice();
         }
         return sum;
     }

@@ -1,2 +1,2 @@
-public class Temple implements IProductPart{
+public class Temple implements IProductPart {
 }

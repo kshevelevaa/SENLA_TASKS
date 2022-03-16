@@ -1,11 +1,11 @@
-public class Iris extends Flower{
+public class Iris extends Flower {
 
-
-
-    @Override
-    void setPrice() {
-        this.price=70;
+    Iris() {
+        this.price = 70;
     }
 
-
+    @Override
+    void smell() {
+        System.out.println("smells spicy");
+    }
 }

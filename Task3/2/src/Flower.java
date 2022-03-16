@@ -1,9 +1,10 @@
 public abstract class Flower {
     public int price;
-    abstract void setPrice();
-    int getPrice(){
-        setPrice();
+
+    abstract void smell();
+
+    int getPrice() {
         return price;
-    };
+    }
 
 }
