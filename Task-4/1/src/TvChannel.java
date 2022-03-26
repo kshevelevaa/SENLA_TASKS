@@ -1,9 +1,9 @@
 import java.time.LocalDate;
 
-public class TvChannel extends Service{
-    TvChannel(LocalDate checkIn){
-        this.price=500;
-        date=checkIn.plusDays(1);
+public class TvChannel extends Service {
+    TvChannel(LocalDate checkIn) {
+        this.price = 500;
+        date = checkIn.plusDays(1);
     }
 
     @Override

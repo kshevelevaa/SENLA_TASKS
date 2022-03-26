@@ -2,45 +2,43 @@ import java.time.LocalDate;
 import java.time.temporal.ChronoUnit;
 import java.util.*;
 
-enum Status {REPAIR, FREE, BUSY}
-
 public class HotelRoom {
 
-    int people = 0;
-    private Client[] clientsInRoom = new Client[5];
-    private List<Client> previousClients=new ArrayList<>();
+    private List<Client> clientsInRoom = new ArrayList<>();
+    private List<Client> previousClients = new ArrayList<>();
     private int dayPrice;
     private int allDayPrice;
     private int totalPrice;
     private Status status = Status.FREE;
     private int number;
-    private int countOfRoom;
-    private int countOfPeople;
-    private int countOfStars;
-    private List<Service> service = new ArrayList<>();
+    private int maxRoomNumber;//unchangeable
+    private int maxPeopleNumber;//unchangeable
+    private int maxStarsNumber;//unchangeable
+    private List<Service> services = new ArrayList<>();
 
     HotelRoom(int i) {
         this.number = i;
         this.dayPrice = (int) (Math.random() * (4999)) + 1;
-        this.countOfRoom = (int) (Math.random() * (4)) + 1;
-        this.countOfPeople = (int) (Math.random() * (4)) + 1;
-        this.countOfStars = (int) (Math.random() * (4)) + 1;
+        this.maxRoomNumber = (int) (Math.random() * (4)) + 1;
+        this.maxPeopleNumber = (int) (Math.random() * (4)) + 1;
+        this.maxStarsNumber = (int) (Math.random() * (4)) + 1;
     }
 
     public void settle(Client client) {
-        this.clientsInRoom[people] = client;
-        this.allDayPrice=client.getStayingDays()*dayPrice;
-        this.people++;
+        //this.clientsInRoom[people] = client;
+        clientsInRoom.add(client);
+        this.allDayPrice = client.getStayingDays() * dayPrice;
+        //this.people++;
         client.setHotelRoom(this.number);
         status = Status.BUSY;
         System.out.println("settle a person");
 
     }
+
     public void evict() {
-        while (this.people > 0) {
-            previousClients.add(clientsInRoom[people-1]);
-            clientsInRoom[people] = null;
-            people--;
+        while (clientsInRoom.size() > 0) {
+            previousClients.add(clientsInRoom.get(clientsInRoom.size() - 1));
+            clientsInRoom.remove(clientsInRoom.get(clientsInRoom.size() - 1));
         }
         status = Status.FREE;
         System.out.println("evict a person");
@@ -55,42 +53,47 @@ public class HotelRoom {
         this.status = status;
         System.out.println("change status");
     }
+
     public void setService(Service serv) {
-        service.add(serv);
+        services.add(serv);
     }
+
     public void setNumber(int number) {
         this.number = number;
     }
 
-    public int getPriceByService() {
-        int allPrice = 0;
-        for (int i = 0; i < service.size(); i++)
-            allPrice += service.get(i).getPrice();
-        return allPrice;
-    }
-    public List<Service> getService() {
-        return service;
+    public int getPriceForServiceOfClient() {
+        int allPriceForService = 0;
+        for (int i = 0; i < services.size(); i++)
+            allPriceForService += services.get(i).getPrice();
+        return allPriceForService;
     }
 
-    public int getTotalPrice(){
-        totalPrice=getPriceByService()+allDayPrice;
+    public List<Service> getService() {
+        return services;
+    }
+
+    public int getTotalPrice() {
+        totalPrice = getPriceForServiceOfClient() + allDayPrice;
         return totalPrice;
     }
-    public int getAllDayPrice(){
+
+    public int getAllDayPrice() {
         return allDayPrice;
     }
 
-    public void getPreviousClients(int count){
+    public void getPreviousClients(int count) {
         System.out.println("PREVIOUS CLIENTS:\n");
-        for(int i=previousClients.size();i>(previousClients.size()-count);i--)
-            System.out.println(previousClients.get(i-1));
+        for (int i = previousClients.size(); i > (previousClients.size() - count); i--)
+            System.out.println(previousClients.get(i - 1));
 
     }
+
     public static void getFreeRooms(List<HotelRoom> hotel, LocalDate date) {
         for (int i = 0; i < hotel.size(); i++) {
             if (hotel.get(i).getStatus() == Status.FREE) System.out.println(hotel.get(i));
             if (hotel.get(i).getStatus() == Status.BUSY) {
-                long difference = ChronoUnit.DAYS.between(hotel.get(i).getClientsInRoom()[0].getCheckOut(), date);
+                long difference = ChronoUnit.DAYS.between(hotel.get(i).getClientsInRoom().get(0).getCheckOut(), date);
                 if (difference > 0) System.out.println(hotel.get(i));
             }
         }
@@ -108,23 +111,24 @@ public class HotelRoom {
     public int getPrice() {
         return dayPrice;
     }
+
     public int getCountOfRoom() {
-        return countOfRoom;
+        return maxRoomNumber;
     }
 
     public int getCountOfPeople() {
-        return countOfPeople;
+        return maxPeopleNumber;
     }
 
     public int getCountOfStars() {
-        return countOfStars;
+        return maxStarsNumber;
     }
 
     public int getPeople() {//count of people in ine room
-        return people;
+        return clientsInRoom.size();
     }
 
-    public Client[] getClientsInRoom() {
+    public List<Client> getClientsInRoom() {
         return clientsInRoom;
     }
 
@@ -139,7 +143,7 @@ public class HotelRoom {
     @Override
     public String toString() {
         return "HotelRoom{" +
-                "people=" + people +
+                "people=" + clientsInRoom.size() +
                 //", clientsInRoom=" + Arrays.toString(clientsInRoom) +
                 //", previousClients=" + previousClients +
                 ", dayPrice=" + dayPrice +
@@ -147,10 +151,10 @@ public class HotelRoom {
                 ", totalPrice=" + totalPrice +
                 ", status=" + status +
                 ", number=" + number +
-                //", countOfRoom=" + countOfRoom +
-                ", countOfPeople=" + countOfPeople +
-                ", countOfStars=" + countOfStars +
-                //", service=" + service +
+                //", maxRoomNumber=" + maxRoomNumber +
+                ", maxPeopleNumber=" + maxPeopleNumber +
+                ", maxStarsNumber=" + maxStarsNumber +
+                //", services=" + services +
                 '}';
     }
 

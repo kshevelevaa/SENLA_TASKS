@@ -1,7 +1,7 @@
 import java.util.Comparator;
 import java.util.List;
 
-public class Sorting {
+public class SortingUtil {
     public static void sortByPrice(List<HotelRoom> hotel) {
         System.out.println("After sorting by price\n");
         hotel.stream().sorted(Comparator.comparingInt(HotelRoom::getPrice)).forEach(System.out::println);
@@ -36,8 +36,11 @@ public class Sorting {
         System.out.println("After sorting by date\n");
         service.stream().sorted(Comparator.comparing(Service::getDate)).forEach(System.out::println);
     }
-    public static void sortTotalCost(List<HotelRoom> hotel){
+
+    public static void sortTotalCost(List<HotelRoom> hotel) {
         System.out.println("After sorting by total cost\n");
         hotel.stream().sorted(Comparator.comparing(HotelRoom::getTotalPrice)).forEach(System.out::println);
-    };
+    }
+
+    ;
 }

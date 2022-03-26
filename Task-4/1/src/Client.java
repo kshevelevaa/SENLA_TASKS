@@ -2,7 +2,8 @@ import java.time.LocalDate;
 import java.util.*;
 
 public class Client {
-    private LocalDate checkIn, checkOut;
+    private LocalDate checkIn;
+    private LocalDate checkOut;
     private int stayingDays;
     private String name;
     private String surname;
@@ -35,6 +36,7 @@ public class Client {
     public String getSurname() {
         return surname;
     }
+
     public String getName() {
         return name;
     }
@@ -46,6 +48,7 @@ public class Client {
     public int getHotelRoom() {
         return hotelRoom;
     }
+
     @Override
     public String toString() {
         return "Client{" +
@@ -55,7 +58,7 @@ public class Client {
                 ", name='" + name + '\'' +
                 ", surname='" + surname + '\'' +
                 ", hotelRoom=" + hotelRoom +
-                '}'+"\n";
+                '}' + "\n";
     }
 
 

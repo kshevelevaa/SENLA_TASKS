@@ -5,16 +5,24 @@ public abstract class Service {
 
     int price;
     LocalDate date;
-    public void setPrice(int price){
-        this.price=price;
-    };
 
-    public int getPrice(){
+    public void setPrice(int price) {
+        this.price = price;
+    }
+
+    ;
+
+    public int getPrice() {
         return price;
-    };
-    public LocalDate getDate(){
+    }
+
+    ;
+
+    public LocalDate getDate() {
         return date;
-    };
+    }
+
+    ;
 
     abstract void getName();
 

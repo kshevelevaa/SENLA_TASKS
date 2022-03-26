@@ -1,11 +1,12 @@
 import java.time.LocalDate;
 
-public class Food extends Service{
+public class Food extends Service {
 
-    Food(LocalDate checkIn){
-    price=300;
-    date=checkIn.plusDays(3);
+    Food(LocalDate checkIn) {
+        price = 300;
+        date = checkIn.plusDays(3);
     }
+
     @Override
     void getName() {
         System.out.println("Food in the room");
