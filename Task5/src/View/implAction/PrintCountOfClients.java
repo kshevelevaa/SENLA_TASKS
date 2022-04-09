@@ -1,11 +1,11 @@
 package View.implAction;
 
-import View.IAction;
+import View.AbstractAction;
 
-public class PrintCountOfClients implements IAction {
+public class PrintCountOfClients extends AbstractAction {
 
     @Override
     public void doAction() {
-        hotelRoomService.printCountOfClients();
+        System.out.println("общее количество клиентов:" + clientService.getCountOfClients());
     }
 }

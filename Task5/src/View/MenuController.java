@@ -8,11 +8,6 @@ public class MenuController {
         builder.buildMenu();
         System.out.println(builder.getMenu());
         Navigator navigator = new Navigator(builder.rootMenu);
-        Scanner scanner = new Scanner(System.in);
-        int enter = scanner.nextInt();
-        while (enter != 0) {
-            navigator.navigate(enter);
-            enter = scanner.nextInt();
-        }
+        navigator.navigate();
     }
 }

@@ -1,11 +1,10 @@
 package View.implAction;
 
-import Service.SortUtil;
-import View.IAction;
+import View.AbstractAction;
 
-public class SortHotelRoomsByCountOfPeople implements IAction {
+public class SortHotelRoomsByCountOfPeople extends AbstractAction {
     @Override
     public void doAction() {
-        SortUtil.sortHotelRoomsByCountOfPeople(hotelRoomService.getHotel());
+        System.out.println("сортировка номеров по вместимости:\n" + hotelRoomService.sortHotelRoomsByCountOfPeople(hotelRoomDao.getAll()));
     }
 }

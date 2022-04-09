@@ -1,10 +1,10 @@
 package View.implAction;
 
-import View.IAction;
+import View.AbstractAction;
 
-public class PrintCountOfFreeHotelRooms implements IAction {
+public class PrintCountOfFreeHotelRooms extends AbstractAction {
     @Override
     public void doAction() {
-        hotelRoomService.printCountOfFreeHotelRooms();
+        System.out.println("количество свободных комнат: " + hotelRoomService.getCountOfFreeHotelRooms());
     }
 }

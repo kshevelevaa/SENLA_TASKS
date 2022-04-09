@@ -1,13 +1,22 @@
 package View.implAction;
 
-import View.IAction;
+import Dao.Entity.RoomStatus;
+import View.AbstractAction;
 
-public class Evict implements IAction {
+public class Evict extends AbstractAction {
     @Override
     public void doAction() {
+        for (int i = 0; i < hotelRoomService.getAll().size(); i++) {
+            if (hotelRoomService.getAll().get(i).getStatus() == RoomStatus.BUSY)
+                System.out.println(hotelRoomService.getAll().get(i));
+        }
+        System.out.println("выберите номер, из которого нужно выселить клиентов");
+        int enter = scanner.nextInt();
+        while (hotelRoomService.getAll().get(enter).getStatus() != RoomStatus.BUSY) {
+            System.out.println("тут некого выселять((");
+            enter = scanner.nextInt();
+        }
+        hotelRoomService.evict(hotelRoomService.getAll().get(enter).getClientsInRoom());
 
-        hotelRoomService.evict(currentClients.getCurrentClients().get(0));
-        hotelRoomService.evict(currentClients.getCurrentClients().get(1));
-        hotelRoomService.evict(currentClients.getCurrentClients().get(2));
     }
 }

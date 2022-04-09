@@ -1,23 +1,26 @@
-package Model;
+package Dao.Entity;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.concurrent.atomic.AtomicInteger;
 
-public class HotelRoom {
+public class HotelRoom extends AbstractEntity {
 
     private List<Client> clientsInRoom = new ArrayList<>();
     private int dayPrice;
-    private Status status = Status.FREE;
-    private int roomNumber;
+    private RoomStatus status = RoomStatus.FREE;
+    private long roomNumber;
     private int maxPeopleCount;
     private int starsCount;
     List<Maintenance> maintenance = new ArrayList<>();
+    RandomUtil randomUtil = new RandomUtil();
 
-    public HotelRoom(int roomNumber) {
+    public HotelRoom(long roomNumber, int maxPeopleCount, int dayPrice, int starsCount) {
+        this.id = RandomUtil.generateId();
         this.roomNumber = roomNumber;
-        this.maxPeopleCount = (int) (Math.random() * (4)) + 1;
-        this.dayPrice = (int) (Math.random() * (4999)) + 1;
-        this.starsCount = (int) (Math.random() * (4)) + 1;
+        this.maxPeopleCount = maxPeopleCount;
+        this.dayPrice = dayPrice;
+        this.starsCount = starsCount;
     }
 
     public List<Client> getClientsInRoom() {
@@ -40,15 +43,15 @@ public class HotelRoom {
         this.dayPrice = dayPrice;
     }
 
-    public Status getStatus() {
+    public RoomStatus getStatus() {
         return status;
     }
 
-    public void setStatus(Status status) {
+    public void setStatus(RoomStatus status) {
         this.status = status;
     }
 
-    public int getRoomNumber() {
+    public long getRoomNumber() {
         return roomNumber;
     }
 
@@ -77,7 +80,8 @@ public class HotelRoom {
                 ", roomNumber=" + roomNumber +
                 ", maxPeopleCount=" + maxPeopleCount +
                 ", starsCount=" + starsCount +
-                ", maintenance=" + maintenance +
-                '}';
+                //", maintenance=" + maintenance +
+                " id=" + getId() +
+                "}\n";
     }
 }

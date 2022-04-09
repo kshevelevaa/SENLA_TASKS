@@ -4,7 +4,7 @@ import java.util.List;
 
 public class Menu {
     String name;
-    List<MenuItems> menuItems;
+    List<MenuItem> menuItems;
 
     public String getName() {
         return name;
@@ -14,7 +14,7 @@ public class Menu {
         this.name = name;
     }
 
-    public List<MenuItems> getMenuItems() {
+    public List<MenuItem> getMenuItems() {
 
         return menuItems;
     }
@@ -37,7 +37,7 @@ public class Menu {
     }
 
 
-    public void setMenuItems(List<MenuItems> menuItems) {
+    public void setMenuItems(List<MenuItem> menuItems) {
         this.menuItems = menuItems;
     }
 }

@@ -1,11 +1,15 @@
 package View;
 
-public class MenuItems {
+public class MenuItem {
     String title;
     Menu nextMenu;
-    IAction action;
+    AbstractAction action;
 
-    public MenuItems(String title, IAction action) {
+    public MenuItem(String title) {
+        this.title = title;
+    }
+
+    public MenuItem(String title, AbstractAction action) {
 
         this.title = title;
         this.action = action;

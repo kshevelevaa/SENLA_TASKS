@@ -1,11 +1,11 @@
 package View.implAction;
 
-import Service.SortUtil;
-import View.IAction;
+import View.AbstractAction;
 
-public class SortClientsByDateCheckOut implements IAction {
+public class SortClientsByDateCheckOut extends AbstractAction {
     @Override
     public void doAction() {
-        SortUtil.sortClientsByCheckOut(currentClients.getCurrentClients());
+        System.out.println("Сортировка клиентов по дате выезда");
+        clientService.sortClientsByCheckOut(clientDao.getAll());
     }
 }

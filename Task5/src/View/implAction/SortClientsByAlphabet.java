@@ -1,11 +1,12 @@
 package View.implAction;
 
-import Service.SortUtil;
-import View.IAction;
+import View.AbstractAction;
 
-public class SortClientsByAlphabet implements IAction {
+
+public class SortClientsByAlphabet extends AbstractAction {
     @Override
     public void doAction() {
-        SortUtil.sortClientsByAlphabet(currentClients.getCurrentClients());
+        System.out.println("Сортировка клиентов по алфавиту");
+        clientService.sortClientsByAlphabet(clientDao.getAll());
     }
 }

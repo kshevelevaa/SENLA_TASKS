@@ -1,11 +1,18 @@
 package View.implAction;
 
-import View.IAction;
+import View.AbstractAction;
 
-public class PrintTotalCostForClient implements IAction {
+public class PrintTotalCostForClient extends AbstractAction {
 
     @Override
     public void doAction() {
-        hotelRoomService.printTotalCostForClient(currentClients.getCurrentClients().get(0));
+        System.out.println(clientDao.getAll());
+        int idClient = -1;
+        while (clientDao.getById(idClient) == null) {
+            System.out.println("введите правильный id клиента, для которой нужно вывести общую стоимость номера и услгу сервиса");
+            idClient = scanner.nextInt();
+        }
+        System.out.println("общая стоимость:\n"
+                + clientService.getTotalCostForClient(clientDao.getById(idClient)));
     }
 }

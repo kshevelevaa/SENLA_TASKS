@@ -1,13 +1,17 @@
 package View.implAction;
 
-import View.IAction;
+import View.AbstractAction;
 
-import java.time.LocalDate;
+import java.time.LocalDateTime;
 
-public class PrintHotelRoomsToBeFreeToDate implements IAction {
+public class PrintHotelRoomsToBeFreeToDate extends AbstractAction {
     @Override
     public void doAction() {
-        LocalDate date = LocalDate.now().plusDays((int) (Math.random() * (5)) + 1);
-        hotelRoomService.printHotelRoomToBeFreeToData(date);
+        System.out.println("введите количество дней, через которое должна освободиться комната:");
+        int days = scanner.nextInt();
+        LocalDateTime date = LocalDateTime.now().plusDays(days);
+        System.out.println("свободные комнаты к " + date + "\n");
+        hotelRoomService.getHotelRoomFreeOnData(date);
+
     }
 }
