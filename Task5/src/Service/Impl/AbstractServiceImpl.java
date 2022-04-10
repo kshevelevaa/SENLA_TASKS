@@ -10,13 +10,11 @@ public abstract class AbstractServiceImpl<T extends AbstractEntity, D extends Ab
     private D defaultDao;
 
     public AbstractServiceImpl(D defaultDao) {
-
         this.defaultDao = defaultDao;
     }
 
     @Override
     public T getById(long id) {
-
         return defaultDao.getById(id);
     }
 
@@ -27,19 +25,16 @@ public abstract class AbstractServiceImpl<T extends AbstractEntity, D extends Ab
 
     @Override
     public void create(T entity) {
-
         defaultDao.create(entity);
     }
 
     @Override
     public void deleteById(long id) {
-
         defaultDao.deleteById(id);
     }
 
     @Override
     public void updateById(long id, T entity) {
-
         defaultDao.updateById(id, entity);
     }
 }

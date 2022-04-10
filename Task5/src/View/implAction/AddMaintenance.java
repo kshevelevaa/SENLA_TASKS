@@ -1,25 +1,18 @@
 package View.implAction;
 
+import Service.ClientService;
+import Service.MaintenanceService;
 import View.AbstractAction;
+import View.ReadUtil;
 
 public class AddMaintenance extends AbstractAction {
     @Override
     public void doAction() {
-        System.out.println(clientDao.getAll());
-        System.out.println("введите id клиента, которому хотите добавить услугу");
-        int idClient = scanner.nextInt();
-        while (clientDao.getById(idClient) == null) {
-            System.out.println("клиентов с таким id нет\nвведите правильный id");
-            idClient = scanner.nextInt();
-        }
-        System.out.println(maintenanceDao.getAll());
-        System.out.println("выберите id услуги, которую хотите добавить");
-        int idMaintenance = scanner.nextInt();
-        while (maintenanceDao.getById(idMaintenance) == null) {
-            System.out.println("услуг с таким id нет\nвведите правильный id");
-            idMaintenance = scanner.nextInt();
-        }
-        clientService.addMaintenance(clientDao.getById(idClient), maintenanceDao.getById(idMaintenance));
-        System.out.println("добивили клиенту " + clientDao.getById(idClient) + " услугу " + maintenanceDao.getById(idMaintenance));
+        ReadUtil<ClientService> client = new ReadUtil<>();
+        int idClient = client.readId(clientService);
+        ReadUtil<MaintenanceService> maintenance = new ReadUtil<>();
+        int idMaintenance = maintenance.readId(maintenanceService);
+        clientService.addMaintenance(clientService.getById(idClient), maintenanceService.getById(idMaintenance));
+        System.out.println("добивили клиенту " + clientService.getById(idClient) + " услугу " + maintenanceService.getById(idMaintenance));
     }
 }

@@ -1,6 +1,5 @@
 package Dao.Entity;
 
-import java.time.LocalDate;
 import java.time.LocalDateTime;
 
 public class Maintenance extends AbstractEntity {
@@ -19,7 +18,7 @@ public class Maintenance extends AbstractEntity {
     }
 
     public Maintenance(String name, int price, LocalDateTime date) {
-        this.id = RandomUtil.generateId();
+        this.id = GenerateId.generateId();
         this.name = name;
         this.price = price;
         this.date = date;

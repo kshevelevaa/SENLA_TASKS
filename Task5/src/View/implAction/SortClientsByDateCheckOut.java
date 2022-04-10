@@ -6,6 +6,6 @@ public class SortClientsByDateCheckOut extends AbstractAction {
     @Override
     public void doAction() {
         System.out.println("Сортировка клиентов по дате выезда");
-        clientService.sortClientsByCheckOut(clientDao.getAll());
+        clientService.sortClientsByCheckOut(clientService.getAll());
     }
 }

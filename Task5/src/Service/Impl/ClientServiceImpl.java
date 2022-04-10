@@ -42,19 +42,9 @@ public class ClientServiceImpl extends AbstractServiceImpl<Client, ClientDao> im
         clientDao.updateById(id, entity);
     }
 
-
-    public void addClient(Client client) {
-        clientDao.addClient(client);
-    }
-
     @Override
     public long getCountOfClients() {
         return clientDao.getAll().stream().filter(x -> x.getClientStatus() == ClientStatus.CURRENT).count();
-    }
-
-    @Override
-    public List<Client> getThreePreviousClients() {
-        return clientDao.getAll().stream().filter((x -> x.getClientStatus() == ClientStatus.PREVIOUS)).toList();
     }
 
     @Override
@@ -64,16 +54,14 @@ public class ClientServiceImpl extends AbstractServiceImpl<Client, ClientDao> im
 
     @Override
     public int getTotalCostForClient(Client client) {
-        return 0;
+        return clientDao.getTotalCost(client);
     }
 
     public void sortClientsByAlphabet(List<Client> clients) {
-        System.out.println("After sorting by alphabet\n");
         clients.stream().sorted(Comparator.comparing(Client::getName)).forEach(System.out::println);
     }
 
     public void sortClientsByCheckOut(List<Client> clients) {
-        System.out.println("After sorting by check-out\n");
         clients.stream().sorted(Comparator.comparing(Client::getCheckOut)).forEach(System.out::println);
     }
 

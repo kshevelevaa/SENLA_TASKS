@@ -2,7 +2,6 @@ package Dao.Entity;
 
 import java.util.ArrayList;
 import java.util.List;
-import java.util.concurrent.atomic.AtomicInteger;
 
 public class HotelRoom extends AbstractEntity {
 
@@ -12,11 +11,9 @@ public class HotelRoom extends AbstractEntity {
     private long roomNumber;
     private int maxPeopleCount;
     private int starsCount;
-    List<Maintenance> maintenance = new ArrayList<>();
-    RandomUtil randomUtil = new RandomUtil();
 
     public HotelRoom(long roomNumber, int maxPeopleCount, int dayPrice, int starsCount) {
-        this.id = RandomUtil.generateId();
+        this.id = GenerateId.generateId();
         this.roomNumber = roomNumber;
         this.maxPeopleCount = maxPeopleCount;
         this.dayPrice = dayPrice;
@@ -55,7 +52,7 @@ public class HotelRoom extends AbstractEntity {
         return roomNumber;
     }
 
-    public void setRoomNumber(int roomNumber) {
+    public void setRoomNumber(long roomNumber) {
         this.roomNumber = roomNumber;
     }
 
@@ -67,10 +64,6 @@ public class HotelRoom extends AbstractEntity {
         this.maxPeopleCount = maxPeopleCount;
     }
 
-    public void setMaintenanceList(List<Maintenance> maintenance) {
-        this.maintenance = maintenance;
-    }
-
     @Override
     public String toString() {
         return "HotelRoom{" +
@@ -80,7 +73,6 @@ public class HotelRoom extends AbstractEntity {
                 ", roomNumber=" + roomNumber +
                 ", maxPeopleCount=" + maxPeopleCount +
                 ", starsCount=" + starsCount +
-                //", maintenance=" + maintenance +
                 " id=" + getId() +
                 "}\n";
     }

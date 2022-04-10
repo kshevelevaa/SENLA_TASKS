@@ -25,4 +25,15 @@ public interface HotelRoomService extends AbstractService<HotelRoom>, HotelRoomD
     public List<Client> PrintPreviousClientsInHotelRoom(long id);
 
     public List<HotelRoom> sortFreeHotelRoomsByPrice(List<HotelRoom> hotel);
+
+    public List<HotelRoom> sortFreeHotelRoomsByCountOfPeople(List<HotelRoom> hotel);
+
+    public List<HotelRoom> sortFreeHotelRoomsByCountOfStars(List<HotelRoom> hotel);
+
+    public List<HotelRoom> sortHotelRoomsByPrice(List<HotelRoom> hotel);
+
+    public List<HotelRoom> sortHotelRoomsByCountOfPeople(List<HotelRoom> hotel);
+
+    public List<HotelRoom> sortHotelRoomsByCountOfStars(List<HotelRoom> hotel);
+
 }

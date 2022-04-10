@@ -1,9 +1,7 @@
 package View;
 
-import java.util.Scanner;
-
 public class MenuController {
-    public static void main(String[] args) {
+    public void run() {
         Builder builder = new Builder();
         builder.buildMenu();
         System.out.println(builder.getMenu());

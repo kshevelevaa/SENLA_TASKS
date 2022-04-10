@@ -8,8 +8,6 @@ import java.util.List;
 public interface ClientService extends AbstractService<Client> {
     public long getCountOfClients();
 
-    public List<Client> getThreePreviousClients();
-
     public List<Client> getCurrentClients();
 
     public int getTotalCostForClient(Client client);

@@ -19,7 +19,6 @@ public class Builder {
         menuItems.add(new MenuItem("0.Выйти"));
         rootMenu.menuItems = menuItems;
 
-
         List<MenuItem> clientMenuItems = new ArrayList<>();
         clientMenuItems.add(new MenuItem("1.Поселить", new Settle()));
         clientMenuItems.add(new MenuItem("2.Выселить", new Evict()));
@@ -29,8 +28,8 @@ public class Builder {
         clientMenuItems.add(new MenuItem("0.Выйти"));
         Menu clientMenu = new Menu();
         clientMenu.setName("Клиенты");
-        clientMenu.menuItems = clientMenuItems;
-        rootMenu.menuItems.get(0).nextMenu = clientMenu;
+        clientMenu.setMenuItems(clientMenuItems);
+        rootMenu.menuItems.get(0).setNextMenu(clientMenu);
 
         List<MenuItem> HotelRoomMenuItems = new ArrayList<>();
         HotelRoomMenuItems.add(new MenuItem("1.Добавить комнату", new CreateHotelRoom()));
@@ -43,8 +42,8 @@ public class Builder {
         HotelRoomMenuItems.add(new MenuItem("0.Выйти"));
         Menu HotelRoomMenu = new Menu();
         HotelRoomMenu.setName("Комнаты");
-        HotelRoomMenu.menuItems = HotelRoomMenuItems;
-        rootMenu.menuItems.get(1).nextMenu = HotelRoomMenu;
+        HotelRoomMenu.setMenuItems(HotelRoomMenuItems);
+        rootMenu.menuItems.get(1).setNextMenu(HotelRoomMenu);
 
         List<MenuItem> SortingsMenuItems = new ArrayList<>();
         SortingsMenuItems.add(new MenuItem("1.Сортировать клиентов по алфавиту", new SortClientsByAlphabet()));
@@ -60,13 +59,10 @@ public class Builder {
         SortingsMenuItems.add(new MenuItem("0.Выйти"));
         Menu SortingMenu = new Menu();
         SortingMenu.setName("Комнаты");
-        SortingMenu.menuItems = SortingsMenuItems;
-        rootMenu.menuItems.get(2).nextMenu = SortingMenu;
-
+        SortingMenu.setMenuItems(SortingsMenuItems);
+        rootMenu.menuItems.get(2).setNextMenu(SortingMenu);
 
     }
-
-    ;
 
     public Menu getMenu() {
         return rootMenu;

@@ -12,11 +12,10 @@ public class Client extends AbstractEntity {
     LocalDate checkIn;
     LocalDate checkOut;
     int daysStaying;
-    int totalCost;
     List<Maintenance> maintenances = new ArrayList<>();
 
     public Client(String name, int daysStaying, LocalDate checkIn) {
-        this.id = RandomUtil.generateId();
+        this.id = GenerateId.generateId();
         this.clientStatus = ClientStatus.CURRENT;
         this.name = name;
         this.checkIn = checkIn;
@@ -45,18 +44,6 @@ public class Client extends AbstractEntity {
         this.clientStatus = clientStatus;
     }
 
-    public int getTotalCost() {
-        int maintenancePrice = 0;
-        for (int i = 0; i < maintenances.size(); i++) {
-            maintenancePrice += maintenances.get(i).getPrice();
-        }
-        totalCost = daysStaying * hotelRoom.getDayPrice() + maintenancePrice;
-        return totalCost;
-    }
-
-    public void setTotalCost(int totalCost) {
-        this.totalCost = totalCost;
-    }
 
     public List<Maintenance> getMaintenances() {
         return maintenances;

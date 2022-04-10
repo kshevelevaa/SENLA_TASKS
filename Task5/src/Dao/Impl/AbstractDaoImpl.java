@@ -2,7 +2,6 @@ package Dao.Impl;
 
 import Dao.AbstractDao;
 import Dao.Entity.AbstractEntity;
-import Dao.Entity.Client;
 
 import java.util.ArrayList;
 import java.util.List;

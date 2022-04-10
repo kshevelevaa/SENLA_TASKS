@@ -13,5 +13,5 @@ public interface AbstractDao<T extends AbstractEntity> {
 
     public void deleteById(long id);
 
-    public void updateById(long id, T entity);
+    public void updateById(long id, T client);
 }

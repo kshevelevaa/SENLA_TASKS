@@ -22,6 +22,7 @@ public class Navigator {
             try {
                 if (currentMenu.menuItems.get(enter - 1).nextMenu != null) {
                     {
+
                         System.out.println(currentMenu.menuItems.get(enter - 1).nextMenu.printMenuItems());
                         previousCurrentMenu = currentMenu;
                         currentMenu = currentMenu.menuItems.get(enter - 1).nextMenu;

@@ -1,9 +1,7 @@
 package Dao.Entity;
 
-import java.util.concurrent.atomic.AtomicInteger;
-
 public abstract class AbstractEntity {
-    long id;
+    Long id;
 
     public long getId() {
         return id;

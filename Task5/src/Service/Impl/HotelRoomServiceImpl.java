@@ -34,15 +34,16 @@ public class HotelRoomServiceImpl extends AbstractServiceImpl<HotelRoom, HotelRo
             freeRoom.setStatus(RoomStatus.BUSY);
             for (Client client : clients) {
                 client.setHotelRoom(freeRoom);
-                clientDao.addClient(client);
+                clientDao.create(client);
             }
         }
     }
 
     @Override
     public void evict(List<Client> clients) {
-        clients.get(0).getHotelRoom().setStatus(RoomStatus.FREE);
-        clients.get(0).getHotelRoom().setClientsInRoom(null);
+        HotelRoom hotelRoom = clients.get(0).getHotelRoom();
+        hotelRoom.setStatus(RoomStatus.FREE);
+        hotelRoom.setClientsInRoom(null);
         for (int i = 0; i < clients.size(); i++) clients.get(i).setClientStatus(ClientStatus.PREVIOUS);
     }
 
@@ -59,8 +60,8 @@ public class HotelRoomServiceImpl extends AbstractServiceImpl<HotelRoom, HotelRo
 
     @Override
     public void getHotelRoomFreeOnData(LocalDateTime date) {
-        for (int i = 0; i < hotelRoomDao.getAll().size(); i++) {
-            HotelRoom hotelRoom = hotelRoomDao.getAll().get(i);
+        List<HotelRoom> hotelRooms= hotelRoomDao.getAll();
+        for (HotelRoom hotelRoom : hotelRooms) {
             if (hotelRoom.getStatus() == RoomStatus.FREE) System.out.println(hotelRoom);
             if (hotelRoom.getStatus() == RoomStatus.BUSY) {
                 long difference = ChronoUnit.DAYS.between(hotelRoom.getClientsInRoom().get(0).getCheckOut(), date);
@@ -89,11 +90,6 @@ public class HotelRoomServiceImpl extends AbstractServiceImpl<HotelRoom, HotelRo
     }
 
     @Override
-    public void addHotelRoom(HotelRoom hotelRoom) {
-        hotelRoomDao.addHotelRoom(hotelRoom);
-    }
-
-    @Override
     public void changePriceOfHotelRoomById(int price, HotelRoom hotelRoom) {
         hotelRoom.setDayPrice(price);
     }
@@ -103,28 +99,34 @@ public class HotelRoomServiceImpl extends AbstractServiceImpl<HotelRoom, HotelRo
         hotelRoom.setStatus(status);
     }
 
+    @Override
     public List<HotelRoom> sortFreeHotelRoomsByPrice(List<HotelRoom> hotel) {
         return hotel.stream().filter(x -> x.getStatus() == RoomStatus.FREE).sorted(Comparator.comparingInt(HotelRoom::getDayPrice)).toList();
     }
 
+    @Override
     public List<HotelRoom> sortFreeHotelRoomsByCountOfPeople(List<HotelRoom> hotel) {
         return hotel.stream().filter(x -> x.getStatus() == RoomStatus.FREE).sorted(Comparator.comparingInt(HotelRoom::getMaxPeopleCount)).toList();
     }
 
+    @Override
     public List<HotelRoom> sortFreeHotelRoomsByCountOfStars(List<HotelRoom> hotel) {
         return hotel.stream().filter(x -> x.getStatus() == RoomStatus.FREE).sorted(Comparator.comparingInt(HotelRoom::getStarsCount)).toList();
     }
 
+    @Override
     public List<HotelRoom> sortHotelRoomsByPrice(List<HotelRoom> hotel) {
         return hotel.stream().sorted(Comparator.comparingInt(HotelRoom::getDayPrice)).toList();
     }
 
 
+    @Override
     public List<HotelRoom> sortHotelRoomsByCountOfPeople(List<HotelRoom> hotel) {
         return hotel.stream().sorted(Comparator.comparingInt(HotelRoom::getMaxPeopleCount)).toList();
     }
 
 
+    @Override
     public List<HotelRoom> sortHotelRoomsByCountOfStars(List<HotelRoom> hotel) {
         return hotel.stream().sorted(Comparator.comparingInt(HotelRoom::getStarsCount)).toList();
     }

@@ -1,7 +1,6 @@
 package Dao.Entity;
 
 public class RandomUtil {
-    static long id = 0;
 
     static public int getMax5() {
         return (int) (Math.random() * (4)) + 1;
@@ -11,7 +10,4 @@ public class RandomUtil {
         return (int) (Math.random() * (4999)) + 1;
     }
 
-    static public long generateId() {
-        return id++;
-    }
 }

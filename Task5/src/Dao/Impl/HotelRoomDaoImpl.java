@@ -1,29 +1,19 @@
 package Dao.Impl;
 
-import Dao.Entity.Client;
 import Dao.Entity.HotelRoom;
-import Dao.Entity.RandomUtil;
 import Dao.Entity.RoomStatus;
 import Dao.HotelRoomDao;
 
-import java.util.ArrayList;
-import java.util.List;
-
 public class HotelRoomDaoImpl extends AbstractDaoImpl<HotelRoom> implements HotelRoomDao {
 
-    public HotelRoomDaoImpl() {
-        for (int i = 0; i < 10; i++) {
-            super.repository.add(new HotelRoom(i, RandomUtil.getMax5(), RandomUtil.getMax5000(), RandomUtil.getMax5()));
-        }
-    }
-
     @Override
-    public void updateById(long id, HotelRoom hotelRoom) {
-    }
-
-    @Override
-    public void addHotelRoom(HotelRoom hotelRoom) {
-        repository.add(hotelRoom);
+    public void updateById(long id, HotelRoom newHotelRoom) {
+        HotelRoom hotelRoom = getById(id);
+        hotelRoom.setStatus(newHotelRoom.getStatus());
+        hotelRoom.setDayPrice(newHotelRoom.getDayPrice());
+        hotelRoom.setClientsInRoom(newHotelRoom.getClientsInRoom());
+        hotelRoom.setRoomNumber(newHotelRoom.getRoomNumber());
+        hotelRoom.setMaxPeopleCount(newHotelRoom.getMaxPeopleCount());
     }
 
     @Override

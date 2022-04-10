@@ -10,7 +10,7 @@ public class CreateHotelRoom extends AbstractAction {
         long roomNumber = 1;
         roomNumber += hotelRoomService.getAll().size();
         System.out.println("было комнат: " + hotelRoomService.getAll().size());
-        hotelRoomService.addHotelRoom(new HotelRoom(roomNumber, RandomUtil.getMax5(), RandomUtil.getMax5(), RandomUtil.getMax5000()));
+        hotelRoomService.create(new HotelRoom(roomNumber, RandomUtil.getMax5(), RandomUtil.getMax5(), RandomUtil.getMax5000()));
         System.out.println("стало комнат: " + hotelRoomService.getAll().size());
     }
 }

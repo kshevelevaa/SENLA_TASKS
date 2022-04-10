@@ -18,7 +18,12 @@ public class MaintenanceServiceImpl extends AbstractServiceImpl<Maintenance, Mai
 
     @Override
     public int getMaintenancePriceForClient(Client client) {
-        return 0;
+        List<Maintenance> maintenances=client.getMaintenances();
+        int maintenancePrice=0;
+        for (Maintenance maintenance: maintenances){
+            maintenancePrice+=maintenance.getPrice();
+        }
+        return maintenancePrice;
     }
 
     public List<Maintenance> sortServiceByPriceForClient(Client client) {

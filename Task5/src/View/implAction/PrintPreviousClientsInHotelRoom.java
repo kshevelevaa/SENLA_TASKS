@@ -1,17 +1,15 @@
 package View.implAction;
 
+import Service.HotelRoomService;
 import View.AbstractAction;
+import View.ReadUtil;
 
 public class PrintPreviousClientsInHotelRoom extends AbstractAction {
 
     @Override
     public void doAction() {
-        System.out.println(hotelRoomDao.getAll());
-        int idHotelRoom = -1;
-        while (hotelRoomDao.getById(idHotelRoom) == null) {
-            System.out.println("введите правильный id комнаты, для которой нужен список предыдущих клиентов");
-            idHotelRoom = scanner.nextInt();
-        }
+        ReadUtil<HotelRoomService> hotelRoom = new ReadUtil<>();
+        int idHotelRoom = hotelRoom.readId(hotelRoomService);
         System.out.println("предыдущие клиенты номера:\n" + hotelRoomService.PrintPreviousClientsInHotelRoom(idHotelRoom));
 
     }
