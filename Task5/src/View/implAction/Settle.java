@@ -2,6 +2,7 @@ package View.implAction;
 
 import Dao.Entity.Client;
 import View.AbstractAction;
+import View.ReadUtil;
 
 import java.time.LocalDate;
 import java.util.ArrayList;
@@ -12,17 +13,17 @@ public class Settle extends AbstractAction {
         int countOfClients = 0;
         while (countOfClients < 1 || countOfClients > 5) {
             System.out.println("Максимальное количество человек в номере - 5\nВведите количество клиентов");
-            countOfClients = Integer.parseInt(scanner.nextLine());
+            countOfClients = ReadUtil.readInt();
         }
         int stayingDays = 0;
         while (stayingDays < 1) {
             System.out.println("Введите количество дней пребывания");
-            stayingDays = Integer.parseInt(scanner.nextLine());
+            stayingDays = ReadUtil.readInt();
         }
         System.out.println("введите фамилию и имя клиентов");
         List<Client> clients = new ArrayList<>();
         for (int i = 0; i < countOfClients; i++) {
-            String name = scanner.nextLine();
+            String name = ReadUtil.readString();
             clients.add(new Client(name, stayingDays, LocalDate.now()));
         }
         hotelRoomService.settle(clients);

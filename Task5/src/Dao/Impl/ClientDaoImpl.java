@@ -2,10 +2,15 @@ package Dao.Impl;
 
 import Dao.ClientDao;
 import Dao.Entity.Client;
+import Dao.Entity.GenerateId;
 
 public class ClientDaoImpl extends AbstractDaoImpl<Client> implements ClientDao {
 
+    static GenerateId generatorId=new GenerateId();
 
+    public void giveId(Client entity){
+        entity.setId(generatorId.generateId());
+    }
     @Override
     public void updateById(long id, Client newClient) {
         Client client = getById(id);

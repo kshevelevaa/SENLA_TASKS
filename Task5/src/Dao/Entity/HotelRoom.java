@@ -6,6 +6,7 @@ import java.util.List;
 public class HotelRoom extends AbstractEntity {
 
     private List<Client> clientsInRoom = new ArrayList<>();
+    private List<Client> previousClients = new ArrayList<>();
     private int dayPrice;
     private RoomStatus status = RoomStatus.FREE;
     private long roomNumber;
@@ -13,7 +14,6 @@ public class HotelRoom extends AbstractEntity {
     private int starsCount;
 
     public HotelRoom(long roomNumber, int maxPeopleCount, int dayPrice, int starsCount) {
-        this.id = GenerateId.generateId();
         this.roomNumber = roomNumber;
         this.maxPeopleCount = maxPeopleCount;
         this.dayPrice = dayPrice;
@@ -62,6 +62,13 @@ public class HotelRoom extends AbstractEntity {
 
     public void setMaxPeopleCount(int maxPeopleCount) {
         this.maxPeopleCount = maxPeopleCount;
+    }
+    public List<Client> getPreviousClients() {
+        return previousClients;
+    }
+
+    public void setPreviousClients(List<Client> previousClients) {
+        this.previousClients = previousClients;
     }
 
     @Override

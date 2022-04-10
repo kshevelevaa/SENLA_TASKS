@@ -9,9 +9,8 @@ public class PrintTotalCostForClient extends AbstractAction {
 
     @Override
     public void doAction() {
-        ReadUtil<ClientService> hotelRoom = new ReadUtil<>();
-        int idClient = hotelRoom.readId(clientService);
+        long idClient = ReadUtil.readId(clientService);
         System.out.println("общая стоимость:\n"
-                + clientService.getTotalCostForClient(clientService.getById(idClient)));
+                + clientService.getTotalCostForClient(idClient));
     }
 }

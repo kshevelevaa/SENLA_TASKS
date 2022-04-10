@@ -7,12 +7,11 @@ import View.ReadUtil;
 public class ChangePriceOfHotelRoom extends AbstractAction {
     @Override
     public void doAction() {
-        ReadUtil<HotelRoomService> hotelRoom = new ReadUtil<>();
-        int idHotelRoom = hotelRoom.readId(hotelRoomService);
+        long idHotelRoom = ReadUtil.readId(hotelRoomService);;
         System.out.println("введите новую цену комнаты");
-        int newPrice = scanner.nextInt();
+        int newPrice = ReadUtil.readInt();
         System.out.println("старая цена: " + hotelRoomService.getById(idHotelRoom).getDayPrice());
-        hotelRoomService.changePriceOfHotelRoomById(newPrice, hotelRoomService.getById(idHotelRoom));
+        hotelRoomService.changePriceOfHotelRoomById(newPrice, idHotelRoom);
         System.out.println("новая цена: " + hotelRoomService.getById(idHotelRoom).getDayPrice());
     }
 }

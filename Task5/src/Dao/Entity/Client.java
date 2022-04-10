@@ -15,7 +15,6 @@ public class Client extends AbstractEntity {
     List<Maintenance> maintenances = new ArrayList<>();
 
     public Client(String name, int daysStaying, LocalDate checkIn) {
-        this.id = GenerateId.generateId();
         this.clientStatus = ClientStatus.CURRENT;
         this.name = name;
         this.checkIn = checkIn;
@@ -80,6 +79,7 @@ public class Client extends AbstractEntity {
     public void setDaysStaying(int daysStaying) {
         this.daysStaying = daysStaying;
     }
+
 
     @Override
     public String toString() {

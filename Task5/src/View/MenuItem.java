@@ -37,7 +37,7 @@ public class MenuItem {
     }
 
 
-    public void doAction() {
+    public void doAction(){
         action.doAction();
     }
 }

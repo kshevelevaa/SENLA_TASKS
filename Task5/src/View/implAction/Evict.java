@@ -2,6 +2,7 @@ package View.implAction;
 
 import Dao.Entity.RoomStatus;
 import View.AbstractAction;
+import View.ReadUtil;
 
 public class Evict extends AbstractAction {
     @Override
@@ -11,7 +12,7 @@ public class Evict extends AbstractAction {
                 System.out.println(hotelRoomService.getAll().get(i));
         }
         System.out.println("выберите номер, из которого нужно выселить клиентов");
-        int enter = scanner.nextInt();
+        int enter = ReadUtil.readInt();
         while (hotelRoomService.getAll().get(enter).getStatus() != RoomStatus.BUSY) {
             System.out.println("тут некого выселять((");
             enter = scanner.nextInt();

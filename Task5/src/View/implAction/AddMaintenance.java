@@ -8,11 +8,9 @@ import View.ReadUtil;
 public class AddMaintenance extends AbstractAction {
     @Override
     public void doAction() {
-        ReadUtil<ClientService> client = new ReadUtil<>();
-        int idClient = client.readId(clientService);
-        ReadUtil<MaintenanceService> maintenance = new ReadUtil<>();
-        int idMaintenance = maintenance.readId(maintenanceService);
-        clientService.addMaintenance(clientService.getById(idClient), maintenanceService.getById(idMaintenance));
+        long idClient=ReadUtil.readId(clientService);
+        long idMaintenance = ReadUtil.readId(maintenanceService);
+        clientService.addMaintenance(idClient, idMaintenance);
         System.out.println("добивили клиенту " + clientService.getById(idClient) + " услугу " + maintenanceService.getById(idMaintenance));
     }
 }

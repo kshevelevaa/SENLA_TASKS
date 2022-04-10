@@ -10,12 +10,12 @@ public interface ClientService extends AbstractService<Client> {
 
     public List<Client> getCurrentClients();
 
-    public int getTotalCostForClient(Client client);
+    public int getTotalCostForClient(long idClient);
 
-    public void sortClientsByAlphabet(List<Client> clients);
+    public List<Client> sortClientsByAlphabet(List<Client> clients);
 
-    public void sortClientsByCheckOut(List<Client> clients);
+    public List<Client> sortClientsByCheckOut(List<Client> clients);
 
-    public void addMaintenance(Client client, Maintenance maintenance);
+    public void addMaintenance(long idClient, long idMaintenance);
 
 }

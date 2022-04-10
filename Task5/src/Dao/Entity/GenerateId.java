@@ -1,9 +1,9 @@
 package Dao.Entity;
 
 public class GenerateId {
-    static long id = 0;
+    long id = 0;
 
-    static public long generateId() {
-        return id++;
+    public long generateId() {
+        return ++id;
     }
 }

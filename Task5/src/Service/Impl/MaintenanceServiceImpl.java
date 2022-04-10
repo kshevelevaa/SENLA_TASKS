@@ -1,5 +1,6 @@
 package Service.Impl;
 
+import Dao.ClientDao;
 import Dao.Entity.Client;
 import Dao.Entity.Maintenance;
 import Dao.MaintenanceDao;
@@ -10,15 +11,17 @@ import java.util.List;
 
 public class MaintenanceServiceImpl extends AbstractServiceImpl<Maintenance, MaintenanceDao> implements MaintenanceService {
     private MaintenanceDao maintenanceDao;
+    private ClientDao clientDao;
 
-    public MaintenanceServiceImpl(MaintenanceDao maintenanceDao) {
+    public MaintenanceServiceImpl(MaintenanceDao maintenanceDao, ClientDao clientDao) {
         super(maintenanceDao);
         this.maintenanceDao = maintenanceDao;
+        this.clientDao=clientDao;
     }
 
     @Override
-    public int getMaintenancePriceForClient(Client client) {
-        List<Maintenance> maintenances=client.getMaintenances();
+    public int getMaintenancePriceForClient(long idClient) {
+        List<Maintenance> maintenances=clientDao.getById(idClient).getMaintenances();
         int maintenancePrice=0;
         for (Maintenance maintenance: maintenances){
             maintenancePrice+=maintenance.getPrice();

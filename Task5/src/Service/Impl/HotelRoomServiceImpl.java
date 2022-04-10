@@ -44,7 +44,10 @@ public class HotelRoomServiceImpl extends AbstractServiceImpl<HotelRoom, HotelRo
         HotelRoom hotelRoom = clients.get(0).getHotelRoom();
         hotelRoom.setStatus(RoomStatus.FREE);
         hotelRoom.setClientsInRoom(null);
-        for (int i = 0; i < clients.size(); i++) clients.get(i).setClientStatus(ClientStatus.PREVIOUS);
+        for (int i = 0; i < clients.size(); i++) {
+            clients.get(i).setClientStatus(ClientStatus.PREVIOUS);
+            hotelRoom.getPreviousClients().add(clients.get(i));
+        }
     }
 
 
@@ -60,7 +63,7 @@ public class HotelRoomServiceImpl extends AbstractServiceImpl<HotelRoom, HotelRo
 
     @Override
     public void getHotelRoomFreeOnData(LocalDateTime date) {
-        List<HotelRoom> hotelRooms= hotelRoomDao.getAll();
+        List<HotelRoom> hotelRooms = hotelRoomDao.getAll();
         for (HotelRoom hotelRoom : hotelRooms) {
             if (hotelRoom.getStatus() == RoomStatus.FREE) System.out.println(hotelRoom);
             if (hotelRoom.getStatus() == RoomStatus.BUSY) {
@@ -72,7 +75,6 @@ public class HotelRoomServiceImpl extends AbstractServiceImpl<HotelRoom, HotelRo
 
     @Override
     public HotelRoom findFreeRoom(List<Client> clients) {
-        int i = 0;
         List<HotelRoom> hotelRooms = hotelRoomDao.getAll();
         for (HotelRoom hotelRoom : hotelRooms) {
             if (hotelRoom.getMaxPeopleCount() >= clients.size() &&
@@ -84,19 +86,19 @@ public class HotelRoomServiceImpl extends AbstractServiceImpl<HotelRoom, HotelRo
     }
 
     @Override
-    public List<Client> PrintPreviousClientsInHotelRoom(long id) {
-        HotelRoom hotelRoom = hotelRoomDao.getById(id);
-        return clientDao.getAll().stream().filter(x -> (x.getHotelRoom() == hotelRoom && x.getClientStatus() == ClientStatus.PREVIOUS)).toList();
+    public List<Client> PrintPreviousClientsInHotelRoom(long idHotelRoom) {
+        HotelRoom hotelRoom = hotelRoomDao.getById(idHotelRoom);
+        return hotelRoom.getPreviousClients();
     }
 
     @Override
-    public void changePriceOfHotelRoomById(int price, HotelRoom hotelRoom) {
-        hotelRoom.setDayPrice(price);
+    public void changePriceOfHotelRoomById(int price, long idHotelRoom) {
+        hotelRoomDao.getById(idHotelRoom).setDayPrice(price);
     }
 
     @Override
-    public void changeStatusOfHotelRoom(RoomStatus status, HotelRoom hotelRoom) {
-        hotelRoom.setStatus(status);
+    public void changeStatusOfHotelRoom(RoomStatus status, long idHotelRoom) {
+        hotelRoomDao.getById(idHotelRoom).setStatus(status);
     }
 
     @Override

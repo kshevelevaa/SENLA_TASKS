@@ -4,6 +4,7 @@ import Dao.ClientDao;
 import Dao.Entity.Client;
 import Dao.Entity.ClientStatus;
 import Dao.Entity.Maintenance;
+import Dao.MaintenanceDao;
 import Service.ClientService;
 
 import java.util.Comparator;
@@ -11,10 +12,12 @@ import java.util.List;
 
 public class ClientServiceImpl extends AbstractServiceImpl<Client, ClientDao> implements ClientService {
     private ClientDao clientDao;
+    private MaintenanceDao maintenanceDao;
 
-    public ClientServiceImpl(ClientDao clientDao) {
+    public ClientServiceImpl(ClientDao clientDao, MaintenanceDao maintenanceDao) {
         super(clientDao);
         this.clientDao = clientDao;
+        this.maintenanceDao = maintenanceDao;
     }
 
     @Override
@@ -53,21 +56,21 @@ public class ClientServiceImpl extends AbstractServiceImpl<Client, ClientDao> im
     }
 
     @Override
-    public int getTotalCostForClient(Client client) {
-        return clientDao.getTotalCost(client);
+    public int getTotalCostForClient(long idClient) {
+        return clientDao.getTotalCost(getById(idClient));
     }
 
-    public void sortClientsByAlphabet(List<Client> clients) {
-        clients.stream().sorted(Comparator.comparing(Client::getName)).forEach(System.out::println);
+    public List<Client> sortClientsByAlphabet(List<Client> clients) {
+        return clients.stream().sorted(Comparator.comparing(Client::getName)).toList();
     }
 
-    public void sortClientsByCheckOut(List<Client> clients) {
-        clients.stream().sorted(Comparator.comparing(Client::getCheckOut)).forEach(System.out::println);
+    public List<Client> sortClientsByCheckOut(List<Client> clients) {
+        return clients.stream().sorted(Comparator.comparing(Client::getCheckOut)).toList();
     }
 
     @Override
-    public void addMaintenance(Client client, Maintenance maintenance) {
-        client.getMaintenances().add(maintenance);
+    public void addMaintenance(long idClient, long idMaintenance) {
+        clientDao.getById(idClient).getMaintenances().add(maintenanceDao.getById(idMaintenance));
     }
 
 }

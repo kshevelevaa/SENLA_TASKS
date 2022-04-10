@@ -2,6 +2,7 @@ package Dao.Impl;
 
 import Dao.AbstractDao;
 import Dao.Entity.AbstractEntity;
+import Dao.Entity.GenerateId;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -9,6 +10,7 @@ import java.util.List;
 public abstract class AbstractDaoImpl<T extends AbstractEntity> implements AbstractDao<T> {
     protected List<T> repository = new ArrayList<T>();
 
+    public abstract void giveId(T entity);
     @Override
     public T getById(long id) {
         for (T entity : repository) {
@@ -25,7 +27,7 @@ public abstract class AbstractDaoImpl<T extends AbstractEntity> implements Abstr
 
     @Override
     public void create(T entity) {
-
+        giveId(entity);
         repository.add(entity);
     }
 

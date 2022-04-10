@@ -17,7 +17,8 @@ public class Builder {
         menuItems.add(new MenuItem("2.Комнаты"));
         menuItems.add(new MenuItem("3.Сортирвоки"));
         menuItems.add(new MenuItem("0.Выйти"));
-        rootMenu.menuItems = menuItems;
+        rootMenu.setMenuItems(menuItems);
+
 
         List<MenuItem> clientMenuItems = new ArrayList<>();
         clientMenuItems.add(new MenuItem("1.Поселить", new Settle()));
@@ -62,7 +63,10 @@ public class Builder {
         SortingMenu.setMenuItems(SortingsMenuItems);
         rootMenu.menuItems.get(2).setNextMenu(SortingMenu);
 
+
     }
+
+    ;
 
     public Menu getMenu() {
         return rootMenu;

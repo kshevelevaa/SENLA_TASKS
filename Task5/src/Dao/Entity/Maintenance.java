@@ -7,18 +7,7 @@ public class Maintenance extends AbstractEntity {
     int price;
     LocalDateTime date;
 
-    @Override
-    public String toString() {
-        return "Maintenance{" +
-                "name='" + name + '\'' +
-                "id=" + getId() +
-                ", price=" + price +
-                ", date=" + date +
-                '}';
-    }
-
     public Maintenance(String name, int price, LocalDateTime date) {
-        this.id = GenerateId.generateId();
         this.name = name;
         this.price = price;
         this.date = date;
@@ -46,5 +35,14 @@ public class Maintenance extends AbstractEntity {
 
     public void setPrice(int price) {
         this.price = price;
+    }
+    @Override
+    public String toString() {
+        return "Maintenance{" +
+                "name='" + name + '\'' +
+                "id=" + getId() +
+                ", price=" + price +
+                ", date=" + date +
+                '}';
     }
 }

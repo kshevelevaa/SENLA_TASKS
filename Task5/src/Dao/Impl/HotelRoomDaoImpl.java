@@ -1,11 +1,18 @@
 package Dao.Impl;
 
+import Dao.Entity.Client;
+import Dao.Entity.GenerateId;
 import Dao.Entity.HotelRoom;
 import Dao.Entity.RoomStatus;
 import Dao.HotelRoomDao;
 
 public class HotelRoomDaoImpl extends AbstractDaoImpl<HotelRoom> implements HotelRoomDao {
 
+    static GenerateId generatorId=new GenerateId();
+
+    public void giveId(HotelRoom entity){
+        entity.setId(generatorId.generateId());
+    }
     @Override
     public void updateById(long id, HotelRoom newHotelRoom) {
         HotelRoom hotelRoom = getById(id);
@@ -17,12 +24,13 @@ public class HotelRoomDaoImpl extends AbstractDaoImpl<HotelRoom> implements Hote
     }
 
     @Override
-    public void changePriceOfHotelRoomById(int price, HotelRoom hotelRoom) {
-        hotelRoom.setDayPrice(price);
+    public void changePriceOfHotelRoomById(int price, long idHotelRoom) {
+        getById(idHotelRoom).setDayPrice(price);
     }
 
     @Override
-    public void changeStatusOfHotelRoom(RoomStatus status, HotelRoom hotelRoom) {
-        hotelRoom.setStatus(status);
+    public void changeStatusOfHotelRoom(RoomStatus status, long idHotelRoom) {
+        getById(idHotelRoom).setStatus(status);
     }
+
 }
