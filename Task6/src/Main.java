@@ -1,17 +1,18 @@
-import Dao.Entity.HotelRoom;
-import Dao.Entity.Maintenance;
-import Dao.Entity.RandomUtil;
-import Dao.Impl.ClientDaoImpl;
-import Dao.Impl.HotelRoomDaoImpl;
-import Dao.Impl.MaintenanceDaoImpl;
-import Service.ClientService;
-import Service.Impl.ClientServiceImpl;
-import Service.Impl.HotelRoomServiceImpl;
-import Service.Impl.MaintenanceServiceImpl;
-import View.AbstractAction;
-import View.MenuController;
+import dao.entity.HotelRoom;
+import dao.entity.Maintenance;
+import dao.entity.RandomUtil;
+import dao.impl.ClientDaoImpl;
+import dao.impl.HotelRoomDaoImpl;
+import dao.impl.MaintenanceDaoImpl;
+import service.ClientService;
+import service.impl.ClientServiceImpl;
+import service.impl.HotelRoomServiceImpl;
+import service.impl.MaintenanceServiceImpl;
+import view.AbstractAction;
+import view.Builder;
+import view.MenuController;
+import view.Navigator;
 
-import java.io.File;
 import java.time.LocalDateTime;
 
 public class Main {
@@ -36,7 +37,8 @@ public class Main {
         AbstractAction.setHotelRoomService(hotelRoomService);
         AbstractAction.setMaintenanceService(maintenanceService);
 
-        MenuController menuController = new MenuController();
+        Builder builder=new Builder();
+        MenuController menuController = new MenuController(builder, new Navigator(builder.getMenu()));
         menuController.run();
 
     }

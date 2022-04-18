@@ -1,7 +1,7 @@
-package Dao;
+package dao;
 
-import Dao.Entity.HotelRoom;
-import Dao.Entity.RoomStatus;
+import dao.entity.HotelRoom;
+import dao.entity.RoomStatus;
 
 public interface HotelRoomDao extends AbstractDao<HotelRoom> {
 

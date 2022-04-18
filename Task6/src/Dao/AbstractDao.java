@@ -1,6 +1,6 @@
-package Dao;
+package dao;
 
-import Dao.Entity.AbstractEntity;
+import dao.entity.AbstractEntity;
 
 import java.util.List;
 

@@ -1,6 +1,6 @@
-package Dao;
+package dao;
 
-import Dao.Entity.Maintenance;
+import dao.entity.Maintenance;
 
 public interface MaintenanceDao extends AbstractDao<Maintenance> {
 }
