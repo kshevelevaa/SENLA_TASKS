@@ -19,8 +19,6 @@ public class Client extends AbstractEntity {
     @JsonIdentityReference(alwaysAsId = true)
     private HotelRoom hotelRoom;
 
-    //long idHotelRoom;
-
     private ClientStatus clientStatus;
 
     @JsonIgnore
@@ -105,14 +103,6 @@ public class Client extends AbstractEntity {
     public void setDaysStaying(int daysStaying) {
         this.daysStaying = daysStaying;
     }
-
-//    public long getIdHotelRoom() {
-//        return idHotelRoom;
-//    }
-//
-//    public void setIdHotelRoom(long idHotelRoom) {
-//        this.idHotelRoom = idHotelRoom;
-//    }
 
     public void setCheckInForJson(String checkInForJson) {
         this.checkInForJson = checkInForJson;
