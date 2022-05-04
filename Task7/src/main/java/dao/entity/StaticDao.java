@@ -8,6 +8,12 @@ public  class StaticDao {
     static HotelRoomDaoImpl hotelRoomDao;
     static ClientDaoImpl clientDao;
     static MaintenanceDaoImpl maintenanceDao;
+//    public StaticDao(HotelRoomDaoImpl hotelRoomDao, MaintenanceDaoImpl maintenanceDao, ClientDaoImpl clientDao){
+//        this.clientDao = clientDao;
+//        this.hotelRoomDao = hotelRoomDao;
+//        System.out.println(hotelRoomDao.getAll());
+//        this.maintenanceDao = maintenanceDao;
+//    }
 
     public static HotelRoomDaoImpl getHotelRoomDao() {
         return hotelRoomDao;

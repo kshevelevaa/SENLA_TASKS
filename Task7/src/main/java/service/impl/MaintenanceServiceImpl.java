@@ -61,6 +61,7 @@ public class MaintenanceServiceImpl extends AbstractServiceImpl<Maintenance, Mai
             sb.append(maintenance.getDate());
             sb.append("\n");
 
+            //fr = new FileWriter(maintenanceFile, true);
             fr = new FileWriter(getFile(), true);
             fr.write(sb.toString());
             fr.close();
