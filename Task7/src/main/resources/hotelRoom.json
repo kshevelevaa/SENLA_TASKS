@@ -1,0 +1,91 @@
+[ {
+  "id" : 1,
+  "clientsInRoom" : [ 1, 2 ],
+  "previousClients" : [ ],
+  "dayPrice" : 3913,
+  "status" : "BUSY",
+  "roomNumber" : 0,
+  "maxPeopleCount" : 2,
+  "starsCount" : 1
+}, {
+  "id" : 2,
+  "clientsInRoom" : [ 3, 4 ],
+  "previousClients" : [ ],
+  "dayPrice" : 1254,
+  "status" : "BUSY",
+  "roomNumber" : 1,
+  "maxPeopleCount" : 3,
+  "starsCount" : 2
+}, {
+  "id" : 3,
+  "clientsInRoom" : [ ],
+  "previousClients" : [ ],
+  "dayPrice" : 153,
+  "status" : "FREE",
+  "roomNumber" : 2,
+  "maxPeopleCount" : 1,
+  "starsCount" : 3
+}, {
+  "id" : 4,
+  "clientsInRoom" : [ ],
+  "previousClients" : [ ],
+  "dayPrice" : 1726,
+  "status" : "FREE",
+  "roomNumber" : 3,
+  "maxPeopleCount" : 2,
+  "starsCount" : 4
+}, {
+  "id" : 5,
+  "clientsInRoom" : [ ],
+  "previousClients" : [ ],
+  "dayPrice" : 905,
+  "status" : "FREE",
+  "roomNumber" : 4,
+  "maxPeopleCount" : 3,
+  "starsCount" : 2
+}, {
+  "id" : 6,
+  "clientsInRoom" : [ ],
+  "previousClients" : [ ],
+  "dayPrice" : 3627,
+  "status" : "FREE",
+  "roomNumber" : 5,
+  "maxPeopleCount" : 3,
+  "starsCount" : 2
+}, {
+  "id" : 7,
+  "clientsInRoom" : [ ],
+  "previousClients" : [ ],
+  "dayPrice" : 2440,
+  "status" : "FREE",
+  "roomNumber" : 6,
+  "maxPeopleCount" : 2,
+  "starsCount" : 1
+}, {
+  "id" : 8,
+  "clientsInRoom" : [ ],
+  "previousClients" : [ ],
+  "dayPrice" : 2742,
+  "status" : "FREE",
+  "roomNumber" : 7,
+  "maxPeopleCount" : 2,
+  "starsCount" : 2
+}, {
+  "id" : 9,
+  "clientsInRoom" : [ ],
+  "previousClients" : [ ],
+  "dayPrice" : 4757,
+  "status" : "FREE",
+  "roomNumber" : 8,
+  "maxPeopleCount" : 4,
+  "starsCount" : 4
+}, {
+  "id" : 10,
+  "clientsInRoom" : [ ],
+  "previousClients" : [ ],
+  "dayPrice" : 1950,
+  "status" : "FREE",
+  "roomNumber" : 9,
+  "maxPeopleCount" : 4,
+  "starsCount" : 3
+} ]
