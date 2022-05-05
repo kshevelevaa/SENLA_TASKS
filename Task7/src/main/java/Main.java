@@ -39,22 +39,21 @@ public class Main {
         ObjectMapper mapper = new ObjectMapper();
         mapper.enable(SerializationFeature.INDENT_OUTPUT);
 
-        FileReader readerMaintenance = new FileReader("D:\\JavaCourse\\Task6\\src\\main\\resources\\maintenance.json");
-        FileReader readerClient = new FileReader("D:\\JavaCourse\\Task6\\src\\main\\resources\\client.json");
-        FileReader readerHotelRoom = new FileReader("D:\\JavaCourse\\Task6\\src\\main\\resources\\hotelRoom.json");
+        FileReader readerMaintenance = new FileReader("D:\\JavaCourse\\Task7\\src\\main\\resources\\maintenance.json");
+        FileReader readerClient = new FileReader("D:\\JavaCourse\\Task7\\src\\main\\resources\\client.json");
+        FileReader readerHotelRoom = new FileReader("D:\\JavaCourse\\Task7\\src\\main\\resources\\hotelRoom.json");
 
         CollectionType javaTypeMaintenance = mapper.getTypeFactory().constructCollectionType(List.class, Maintenance.class);
         CollectionType javaTypeClient = mapper.getTypeFactory().constructCollectionType(List.class, Client.class);
         CollectionType javaTypeHotelRoom = mapper.getTypeFactory().constructCollectionType(List.class, HotelRoom.class);
 
-        maintenanceDao.setRepository(mapper.readValue(readerMaintenance, javaTypeMaintenance));
+        maintenanceDao.addAll(mapper.readValue(readerMaintenance, javaTypeMaintenance));
         StaticDao.setMaintenanceDao(maintenanceDao);
-        hotelRoomDao.setRepository(mapper.readValue(readerHotelRoom, javaTypeHotelRoom));
+        hotelRoomDao.addAll(mapper.readValue(readerHotelRoom, javaTypeHotelRoom));
         StaticDao.setHotelRoomDao(hotelRoomDao);
-        clientDao.setRepository(mapper.readValue(readerClient, javaTypeClient));
+        clientDao.addAll(mapper.readValue(readerClient, javaTypeClient));
         StaticDao.setClientDao(clientDao);
 
-//        StaticDao.setClientDao(clientDao);
         ClientService clientService = new ClientServiceImpl(clientDao, maintenanceDao, hotelRoomDao);
         HotelRoomServiceImpl hotelRoomService = new HotelRoomServiceImpl(hotelRoomDao, clientDao);
         if (hotelRoomDao.getAll().size() == 0) {
@@ -95,13 +94,13 @@ public class Main {
         mapper.writeValue(writerClient, StaticDao.getClientDao().getAll());
 
         try {
-            FileWriter fileMaintenance = new FileWriter("D:\\JavaCourse\\Task6\\src\\main\\resources\\maintenance.json");
-            FileWriter fileClient = new FileWriter("D:\\JavaCourse\\Task6\\src\\main\\resources\\client.json");
-            FileWriter fileHotelRoom = new FileWriter("D:\\JavaCourse\\Task6\\src\\main\\resources\\hotelRoom.json");
+            FileWriter fileMaintenance = new FileWriter("D:\\JavaCourse\\Task7\\src\\main\\resources\\maintenance.json");
+            FileWriter fileClient = new FileWriter("D:\\JavaCourse\\Task7\\src\\main\\resources\\client.json");
+            FileWriter fileHotelRoom = new FileWriter("D:\\JavaCourse\\Task7\\src\\main\\resources\\hotelRoom.json");
 
-            FileWriter lastClientId = new FileWriter("D:\\JavaCourse\\Task6\\src\\main\\resources\\lastClientId.txt");
-            FileWriter lastHotelRoomId = new FileWriter("D:\\JavaCourse\\Task6\\src\\main\\resources\\lastHotelRoomId.txt");
-            FileWriter lastMaintenanceId = new FileWriter("D:\\JavaCourse\\Task6\\src\\main\\resources\\lastMaintenanceId.txt");
+            FileWriter lastClientId = new FileWriter("D:\\JavaCourse\\Task7\\src\\main\\resources\\lastClientId.txt");
+            FileWriter lastHotelRoomId = new FileWriter("D:\\JavaCourse\\Task7\\src\\main\\resources\\lastHotelRoomId.txt");
+            FileWriter lastMaintenanceId = new FileWriter("D:\\JavaCourse\\Task7\\src\\main\\resources\\lastMaintenanceId.txt");
 
             lastClientId.write(String.valueOf(clientDao.getById(clientDao.getAll().size()).getId()));
             lastHotelRoomId.write(String.valueOf(hotelRoomDao.getById(hotelRoomDao.getAll().size()).getId()));

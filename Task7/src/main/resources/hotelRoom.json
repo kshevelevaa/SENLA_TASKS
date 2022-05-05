@@ -72,10 +72,10 @@
   "starsCount" : 2
 }, {
   "id" : 9,
-  "clientsInRoom" : [ ],
+  "clientsInRoom" : [ 5, 6, 7, 8 ],
   "previousClients" : [ ],
   "dayPrice" : 4757,
-  "status" : "FREE",
+  "status" : "BUSY",
   "roomNumber" : 8,
   "maxPeopleCount" : 4,
   "starsCount" : 4
@@ -84,7 +84,7 @@
   "clientsInRoom" : [ ],
   "previousClients" : [ ],
   "dayPrice" : 1950,
-  "status" : "FREE",
+  "status" : "REPAIR",
   "roomNumber" : 9,
   "maxPeopleCount" : 4,
   "starsCount" : 3

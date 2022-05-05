@@ -6,7 +6,7 @@ import dao.entity.AbstractEntity;
 import java.util.ArrayList;
 import java.util.List;
 
-public abstract class AbstractDaoImpl<T extends AbstractEntity> implements AbstractDao<T> {
+public abstract class AbstractDaoImpl<T extends AbstractEntity> implements AbstractDao<T>, Cloneable {
     protected List<T> repository = new ArrayList<T>();
 
     public abstract void giveId(T entity);
@@ -31,12 +31,12 @@ public abstract class AbstractDaoImpl<T extends AbstractEntity> implements Abstr
         repository.add(entity);
     }
 
-    public List<T> getRepository() {
-        return repository;
-    }
+    public void addAll(List<T> newRepository) {
+        repository = new ArrayList<>();
+        for (int i = 0; i < newRepository.size(); i++) {
+            repository.add(newRepository.get(i));
+        }
 
-    public void setRepository(List<T> repository) {
-        this.repository = repository;
     }
 
     @Override

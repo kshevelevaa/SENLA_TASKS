@@ -34,4 +34,40 @@
   "checkOutForJson" : "2022-05-03",
   "daysStaying" : 2,
   "maintenances" : [ ]
+}, {
+  "id" : 5,
+  "name" : "er",
+  "hotelRoom" : 9,
+  "clientStatus" : "CURRENT",
+  "checkInForJson" : "2022-05-05",
+  "checkOutForJson" : "2022-05-07",
+  "daysStaying" : 2,
+  "maintenances" : [ ]
+}, {
+  "id" : 6,
+  "name" : "",
+  "hotelRoom" : 9,
+  "clientStatus" : "CURRENT",
+  "checkInForJson" : "2022-05-05",
+  "checkOutForJson" : "2022-05-07",
+  "daysStaying" : 2,
+  "maintenances" : [ ]
+}, {
+  "id" : 7,
+  "name" : "ert",
+  "hotelRoom" : 9,
+  "clientStatus" : "CURRENT",
+  "checkInForJson" : "2022-05-05",
+  "checkOutForJson" : "2022-05-07",
+  "daysStaying" : 2,
+  "maintenances" : [ ]
+}, {
+  "id" : 8,
+  "name" : "erty",
+  "hotelRoom" : 9,
+  "clientStatus" : "CURRENT",
+  "checkInForJson" : "2022-05-05",
+  "checkOutForJson" : "2022-05-07",
+  "daysStaying" : 2,
+  "maintenances" : [ ]
 } ]
